@@ -12,9 +12,9 @@ import java.util.Scanner;
 public class HealthFitnessClubManagementSystem {
 
     //Current user must configure
-    private static final String dataBaseURL = "jdbc:postgresql://localhost:5432/COMP 3005 Project DB";
-    private static final String dataBaseUserName = "postgres";
-    private static final String dataBasePassword = "dAtaBa$3u@R!";
+    private static final String dataBaseURL = "jdbc:postgresql://localhost:5432/database name here";
+    private static final String dataBaseUserName = "database username here";
+    private static final String dataBasePassword = "Database password here";
 
 
 
