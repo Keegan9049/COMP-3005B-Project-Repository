@@ -1,0 +1,21 @@
+-- DELETE ALL DATA IF NEEDED --
+DELETE FROM RoomBooking;
+DELETE FROM PersonalTrainingSession;
+DELETE FROM TrainerAvailability;
+DELETE FROM Room;
+DELETE FROM Equipment;
+DELETE FROM ExerciseRoutine;
+DELETE FROM Payment;
+DELETE FROM Trainer;
+DELETE FROM Class;
+DELETE FROM Member;
+ALTER SEQUENCE member_member_id_seq RESTART WITH 1;
+ALTER SEQUENCE trainer_trainer_id_seq RESTART WITH 1;
+ALTER SEQUENCE class_class_id_seq RESTART WITH 1;
+ALTER SEQUENCE personaltrainingsession_session_id_seq RESTART WITH 1;
+ALTER SEQUENCE traineravailability_availability_id_seq RESTART WITH 1;
+ALTER SEQUENCE room_room_id_seq RESTART WITH 1;
+ALTER SEQUENCE roombooking_booking_id_seq RESTART WITH 1;
+ALTER SEQUENCE equipment_equipment_id_seq RESTART WITH 1;
+ALTER SEQUENCE exerciseroutine_routine_id_seq RESTART WITH 1;
+ALTER SEQUENCE payment_payment_id_seq RESTART WITH 1;

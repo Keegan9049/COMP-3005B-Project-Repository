@@ -1,0 +1,100 @@
+-- MEMBER TABLE --
+CREATE TABLE Member (
+	
+	--Member info 
+    member_id SERIAL PRIMARY KEY, -- auto increment
+	name VARCHAR(255),
+    email VARCHAR(255)UNIQUE,
+	
+	--Account info
+    password VARCHAR(255)UNIQUE,
+    fitness_goal VARCHAR(255),
+	
+	--General data
+	height INT,
+    weight INT 
+);
+
+-- TRAINER TABLE --
+CREATE TABLE Trainer (
+	
+	--Trainer info
+    trainer_id SERIAL PRIMARY KEY, --used in PTS table/class
+    name VARCHAR(255),
+	
+	--Account info
+    email VARCHAR(255) UNIQUE,
+    password VARCHAR(255) UNIQUE 
+);
+
+-- CLASS TABLE --	
+CREATE TABLE Class (
+	-- Class info
+    class_id SERIAL PRIMARY KEY,
+    class_name VARCHAR(255),
+	--Session info
+    start_time VARCHAR(255),
+    end_time VARCHAR(255)
+);
+
+-- PERSONAL TRAINING SESSION TABLE -- 
+CREATE TABLE PersonalTrainingSession (
+	--keys 
+    session_id SERIAL PRIMARY KEY,
+    member_id INT REFERENCES Member(member_id),
+    trainer_id INT REFERENCES Trainer(trainer_id),
+	-- session info
+    start_time VARCHAR(255),
+    end_time VARCHAR(255)
+);
+
+-- TRAINER AVAILAVBILITY TABLE --
+CREATE TABLE TrainerAvailability (
+    availability_id SERIAL PRIMARY KEY,
+    trainer_id INT REFERENCES Trainer(trainer_id),
+    start_time VARCHAR(255),
+    end_time VARCHAR(255)
+);
+
+-- ROOM TABLE --	
+CREATE TABLE Room (
+    room_id SERIAL PRIMARY KEY,
+    room_name VARCHAR(255)
+);
+
+-- ROOM BOOKING TABLE
+CREATE TABLE RoomBooking (
+    booking_id SERIAL PRIMARY KEY,
+    class_id INT,
+    room_id INT REFERENCES Room(room_id),
+    start_time VARCHAR(255),
+    end_time VARCHAR(255)
+);
+
+-- EQUIPMENT TABLE -- 
+CREATE TABLE Equipment (
+    equipment_id SERIAL PRIMARY KEY,
+    equipment_name VARCHAR(255),
+    available BOOLEAN
+);
+
+-- EXERCISE ROUTINE TABLE --
+CREATE TABLE ExerciseRoutine (
+    routine_id SERIAL PRIMARY KEY,
+    member_id INT REFERENCES Member(member_id),
+    date DATE,
+    exercise VARCHAR(255),
+    duration_minutes INT,
+    calories_burned DECIMAL(10, 2)
+);
+
+-- PAYMENT TABLE --	
+CREATE TABLE Payment (
+	-- keys
+    payment_id SERIAL PRIMARY KEY,
+    member_id INT REFERENCES Member(member_id),
+	--payment info 
+    amount DECIMAL(10,2), --eight max before/two after 
+	payment_method VARCHAR(255),
+	payment_status BOOLEAN
+);
